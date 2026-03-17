@@ -54,7 +54,7 @@ export function Hero() {
             <div className="absolute inset-4 border border-indigo-500/30 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
             <div className="w-full h-full rounded-full overflow-hidden bg-neutral-900 border border-white/10 relative">
               <img 
-                src="https://raw.githubusercontent.com/prathamsahu31/Portfolio/refs/heads/main/src/components/Profile%20Photo.jpg" 
+                src="https://raw.githubusercontent.com/prathamsahu31/Portfolio/refs/heads/main/src/components/Profile%20Photo%20872x872.jpg" 
                 alt="Developer Portrait" 
                 className="w-full h-full object-cover opacity-80 mix-blend-luminosity hover:mix-blend-normal transition-all duration-500"
                 referrerPolicy="no-referrer"
