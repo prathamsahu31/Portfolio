@@ -77,7 +77,7 @@ export function Contact() {
                   type="text"
                   id="name"
                   className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all text-white"
-                  placeholder="John Doe"
+                  placeholder="Your name"
                 />
               </div>
               <div className="space-y-2">
@@ -86,7 +86,7 @@ export function Contact() {
                   type="email"
                   id="email"
                   className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none transition-all text-white"
-                  placeholder="john@example.com"
+                  placeholder="email@example.com"
                 />
               </div>
             </div>
