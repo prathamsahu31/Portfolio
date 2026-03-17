@@ -50,7 +50,7 @@ export function Navbar() {
             href="#contact"
             className="px-5 py-2.5 rounded-full bg-white text-black font-medium text-sm hover:bg-neutral-200 transition-colors"
           >
-            Let's Talk
+            Let's Collab
           </a>
         </div>
 
