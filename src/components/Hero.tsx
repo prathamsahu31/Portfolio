@@ -36,9 +36,9 @@ export function Hero() {
               <ArrowRight size={18} />
             </a>
             <div className="flex items-center gap-4 ml-4">
-              <SocialLink href="#" icon={<Github size={20} />} />
-              <SocialLink href="#" icon={<Linkedin size={20} />} />
-              <SocialLink href="#" icon={<Twitter size={20} />} />
+              <SocialLink href="https://github.com/prathamsahu31" icon={<Github size={20} />} />
+              <SocialLink href="https://www.linkedin.com/in/prathamsahu31/" icon={<Linkedin size={20} />} />
+              <SocialLink href="https://x.com/PrathamSahu31" icon={<Twitter size={20} />} />
             </div>
           </div>
         </motion.div>
