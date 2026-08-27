@@ -47,10 +47,11 @@ export function Navbar() {
             </a>
           ))}
           <a
-            href="#contact"
+            href="https://github.com/prathamsahu31/Portfolio/blob/main/Pratham's%20Resume.pdf" // Place your resume file in the public folder
+            download="Pratham_Sahu_Resume.pdf"
             className="px-5 py-2.5 rounded-full bg-white text-black font-medium text-sm hover:bg-neutral-200 transition-colors"
           >
-            Let's Collab
+            Resume
           </a>
         </div>
 
@@ -68,20 +69,4 @@ export function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="absolute top-full left-0 right-0 bg-neutral-950 border-b border-white/10 p-6 flex flex-col gap-4 md:hidden"
-        >
-          {navLinks.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="text-lg font-medium text-neutral-400 hover:text-white transition-colors"
-            >
-              {link.name}
-            </a>
-          ))}
-        </motion.div>
-      )}
-    </motion.nav>
-  );
-}
+          className="absolute top-full left-0 right-0 bg-neutral
