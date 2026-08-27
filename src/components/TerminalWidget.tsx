@@ -122,18 +122,20 @@ export function TerminalWidget() {
       case 'resume':
       case 'cv':
         response = (
-          <div className="text-xs sm:text-sm text-neutral-300">
-            <p className="text-emerald-400">Triggering resume download...</p>
-            <a href="/resume.pdf" download="Pratham_Sahu_Resume.pdf" className="text-cyan-400 underline mt-1 inline-block">
-              Click here if download doesn't start automatically
+          <div className="text-xs sm:text-sm text-neutral-300 space-y-1">
+            <p className="text-emerald-400">Opening official resume from GitHub...</p>
+            <a
+              href="https://raw.githubusercontent.com/prathamsahu31/Portfolio/main/Pratham's%20Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              className="text-cyan-400 underline inline-block"
+            >
+              Click here to view / download PDF
             </a>
           </div>
         );
-        showToast('Downloading Resume...', 'info');
-        const link = document.createElement('a');
-        link.href = '/resume.pdf';
-        link.download = 'Pratham_Sahu_Resume.pdf';
-        link.click();
+        showToast('Opening Resume...', 'info');
+        window.open("https://raw.githubusercontent.com/prathamsahu31/Portfolio/main/Pratham's%20Resume.pdf", '_blank');
         break;
 
       case 'clear':

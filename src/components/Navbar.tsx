@@ -111,8 +111,9 @@ export function Navbar() {
           {/* Action Buttons */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="/resume.pdf"
-              download="Pratham_Sahu_Resume.pdf"
+              href="https://raw.githubusercontent.com/prathamsahu31/Portfolio/main/Pratham's%20Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
               onClick={handleResumeClick}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500 text-neutral-950 font-semibold text-sm hover:bg-emerald-400 transition-all hover:shadow-[0_0_20px_rgba(16,185,129,0.35)] active:scale-95"
             >
@@ -156,8 +157,9 @@ export function Navbar() {
                 ))}
                 <div className="pt-3 border-t border-white/10 flex flex-col gap-2.5">
                   <a
-                    href="/resume.pdf"
-                    download="Pratham_Sahu_Resume.pdf"
+                    href="https://raw.githubusercontent.com/prathamsahu31/Portfolio/main/Pratham's%20Resume.pdf"
+                    target="_blank"
+                    rel="noreferrer"
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       handleResumeClick();
@@ -168,13 +170,13 @@ export function Navbar() {
                     Download Resume
                   </a>
                   <a
-                    href="/resume.pdf"
+                    href="https://github.com/prathamsahu31/Portfolio/blob/main/Pratham's%20Resume.pdf"
                     target="_blank"
                     rel="noreferrer"
                     className="flex items-center justify-center gap-2 w-full py-2 rounded-xl bg-white/5 border border-white/10 text-neutral-300 hover:text-white text-xs font-medium"
                   >
                     <ExternalLink size={14} />
-                    Preview in New Tab
+                    Preview on GitHub
                   </a>
                 </div>
               </div>

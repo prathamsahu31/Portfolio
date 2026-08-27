@@ -28,7 +28,7 @@ export function Footer() {
           <a href="#experience" className="hover:text-white transition-colors">Education</a>
           <a href="#projects" className="hover:text-white transition-colors">Projects</a>
           <a href="#contact" className="hover:text-white transition-colors">Contact</a>
-          <a href="/resume.pdf" download="Pratham_Sahu_Resume.pdf" className="hover:text-emerald-400 transition-colors">Resume</a>
+          <a href="https://raw.githubusercontent.com/prathamsahu31/Portfolio/main/Pratham's%20Resume.pdf" target="_blank" rel="noreferrer" className="hover:text-emerald-400 transition-colors">Resume</a>
         </div>
 
         {/* Right Socials & Back To Top */}

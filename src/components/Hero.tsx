@@ -94,9 +94,10 @@ export function Hero() {
               </a>
 
               <a
-                href="/resume.pdf"
-                download="Pratham_Sahu_Resume.pdf"
-                onClick={() => showToast('Resume download started!', 'info')}
+                href="https://raw.githubusercontent.com/prathamsahu31/Portfolio/main/Pratham's%20Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => showToast('Opening Resume...', 'info')}
                 className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-white/5 border border-white/15 text-white font-medium hover:bg-white/10 hover:border-white/25 transition-all active:scale-95 text-sm"
               >
                 <FileDown size={17} />
