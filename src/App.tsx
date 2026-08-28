@@ -1,36 +1,36 @@
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Marquee } from './components/Marquee';
-import { Toolbox } from './components/About';
-import { FieldNotes } from './components/FieldNotes';
-import { Experience } from './components/Experience';
+import { Toolbox } from './components/Toolbox';
+import { AboutSection } from './components/AboutSection';
 import { Projects } from './components/Projects';
+import { Reviews } from './components/Reviews';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { Cursor } from './components/Cursor';
+import { DoodleCanvas } from './components/DoodleCanvas';
 
 export default function App() {
   return (
-    <div style={{ backgroundColor: 'var(--bg)', color: 'var(--fg)' }}>
-      {/* Navigation */}
+    <div className="min-h-screen bg-paper text-ink selection:bg-blue-600 selection:text-paper relative">
+      {/* Interactive Page Doodle Canvas & Left Margin Line */}
+      <DoodleCanvas />
+
+      {/* Global Header Navigation */}
       <Navbar />
 
-      {/* Main Content */}
-      <main id="main">
+      {/* Main Content Sections */}
+      <main id="main" className="relative z-10">
         <Hero />
         <Marquee />
         <Toolbox />
-        <FieldNotes />
-        <Experience />
+        <AboutSection />
         <Projects />
+        <Reviews />
         <Contact />
       </main>
 
-      {/* Footer */}
+      {/* Page Footer */}
       <Footer />
-
-      {/* Custom Cursor (desktop only) */}
-      <Cursor />
     </div>
   );
 }

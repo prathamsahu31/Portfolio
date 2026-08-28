@@ -1,47 +1,62 @@
-const marqueeItems = [
-  'React', 'Python', 'FastAPI', 'AI Agents', 'TypeScript',
-  'FastMCP', 'Node.js', 'PostgreSQL', 'Docker', 'C++',
-  'Gemini API', 'Supabase', 'Full-Stack', 'DevOps',
+const skills = [
+  'React',
+  'TypeScript',
+  'Python',
+  'FastMCP',
+  'AI Agents',
+  'Gemini API',
+  'FastAPI',
+  'Node.js',
+  'PostgreSQL',
+  'Supabase',
+  'Docker',
+  'C++',
+  'LangChain',
+  'DevOps',
+  'Problem Solver',
+  'NSUT Delhi',
 ];
 
 export function Marquee() {
-  // Duplicate items enough times to fill the screen and enable seamless loop
-  const items = [...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems];
+  // Triple array for seamless infinite marquee loop
+  const list = [...skills, ...skills, ...skills];
 
   return (
-    <div
-      className="overflow-hidden"
-      style={{
-        borderTop: '1px solid var(--border)',
-        borderBottom: '1px solid var(--border)',
-        padding: '1rem 0',
-      }}
-      aria-hidden="true"
-    >
-      <div className="marquee-track">
-        {items.map((item, i) => (
-          <span
-            key={`${item}-${i}`}
-            className="flex items-center gap-6 shrink-0 px-6"
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.75rem',
-              fontWeight: 600,
-              textTransform: 'uppercase',
-              letterSpacing: '0.15em',
-              color: 'var(--fg)',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {item}
+    <div className="border-y-2 border-ink bg-paper py-3 overflow-hidden select-none">
+      <div className="group flex overflow-hidden [gap:2.5rem]">
+        <div className="flex shrink-0 justify-around gap-10 animate-marquee flex-row group-hover:[animation-play-state:paused]">
+          {list.map((item, index) => (
             <span
-              style={{ color: 'var(--accent)' }}
-              className="transition-transform duration-700 ease-out hover:rotate-[135deg]"
+              key={`${item}-${index}`}
+              className="flex items-center gap-8 font-mono text-xs font-medium uppercase tracking-[0.2em] text-ink whitespace-nowrap"
             >
-              ✳
+              <span>{item}</span>
+              <span
+                className="text-blue-600 font-bold transition-transform duration-500 ease-out group-hover:rotate-[135deg]"
+                aria-hidden="true"
+              >
+                ✳
+              </span>
             </span>
-          </span>
-        ))}
+          ))}
+        </div>
+
+        <div className="flex shrink-0 justify-around gap-10 animate-marquee flex-row group-hover:[animation-play-state:paused]" aria-hidden="true">
+          {list.map((item, index) => (
+            <span
+              key={`dup-${item}-${index}`}
+              className="flex items-center gap-8 font-mono text-xs font-medium uppercase tracking-[0.2em] text-ink whitespace-nowrap"
+            >
+              <span>{item}</span>
+              <span
+                className="text-blue-600 font-bold transition-transform duration-500 ease-out group-hover:rotate-[135deg]"
+                aria-hidden="true"
+              >
+                ✳
+              </span>
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );

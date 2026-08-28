@@ -1,136 +1,174 @@
 import { useState, useEffect } from 'react';
-
-const navLinks = [
-  { name: 'Work', href: '#work' },
-  { name: 'About', href: '#about' },
-  { name: 'Contact', href: '#contact' },
-];
+import { Volume2, VolumeX, Menu, X, ExternalLink } from 'lucide-react';
+import { sfx } from '../utils/sfx';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [isSoundOn, setIsSoundOn] = useState(true);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 60);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 30);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    document.body.style.overflow = isMobileOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [isMobileOpen]);
+  const toggleSound = () => {
+    const newState = sfx.toggle();
+    setIsSoundOn(newState);
+  };
+
+  const navLinks = [
+    { name: 'Skills', href: '#skills' },
+    { name: 'About', href: '#about' },
+    { name: 'Work', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
+  ];
 
   return (
     <>
-      <a href="#main" className="skip-to-content">Skip to content</a>
-
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'py-3 border-b backdrop-blur-md'
-            : 'py-5 border-b border-transparent'
-        }`}
-        style={{
-          backgroundColor: isScrolled ? 'rgba(245, 243, 238, 0.85)' : 'transparent',
-          borderColor: isScrolled ? 'var(--border)' : 'transparent',
-        }}
-        aria-label="Primary navigation"
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[300] focus:bg-blue-600 focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-widest focus:text-paper"
       >
-        <div className="container-editorial flex items-center justify-between">
+        Skip to content
+      </a>
+
+      <header
+        className={`fixed inset-x-0 top-0 z-[100] bg-paper transition-[border-color,box-shadow] duration-300 ${
+          isScrolled ? 'border-b-2 border-ink shadow-print-sm' : 'border-b-2 border-transparent'
+        }`}
+      >
+        <nav
+          className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 lg:px-8"
+          aria-label="Primary"
+        >
           {/* Logo / Signature */}
           <a
+            className="font-display text-2xl font-bold tracking-tight text-ink"
             href="#"
-            className="font-display text-xl font-bold tracking-tight"
-            style={{ color: 'var(--fg)' }}
-            data-cursor="pointer"
+            onClick={() => sfx.playPop()}
           >
-            PRATHAM<span className="inline-block transition-transform duration-300 hover:rotate-45 ml-px" style={{ color: 'var(--accent)' }}>*</span>
+            Pratham
+            <span
+              className="inline-block cursor-pointer text-blue-600 transition-transform duration-200 hover:rotate-45 hover:scale-125 select-none"
+              aria-hidden="true"
+            >
+              *
+            </span>
           </a>
 
-          {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation */}
+          <div className="hidden items-center gap-7 md:flex">
+            {/* SFX Mute/Unmute Toggle */}
+            <button
+              type="button"
+              onClick={toggleSound}
+              aria-label={isSoundOn ? 'Mute sound effects' : 'Enable sound effects'}
+              aria-pressed={isSoundOn}
+              title={isSoundOn ? 'Sound on (Click to mute)' : 'Sound muted (Click to enable)'}
+              className={`flex h-8 w-8 items-center justify-center border-2 border-ink transition-colors ${
+                isSoundOn ? 'bg-blue-600 text-paper' : 'bg-paper text-ink'
+              }`}
+            >
+              {isSoundOn ? <Volume2 size={16} /> : <VolumeX size={16} />}
+            </button>
+
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-meta link-editorial"
-                style={{ color: 'var(--muted)', fontSize: '0.6875rem' }}
-                data-cursor="pointer"
+                onClick={() => sfx.playClick()}
+                className="highlight-hover px-1 font-mono text-xs font-medium uppercase tracking-[0.15em] transition-colors text-ink"
               >
                 {link.name}
               </a>
             ))}
+
+            <a
+              href="https://raw.githubusercontent.com/prathamsahu31/Portfolio/main/Pratham's%20Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => sfx.playStamp()}
+              className="highlight-hover px-1 font-mono text-xs font-medium uppercase tracking-[0.15em] transition-colors text-ink inline-flex items-center gap-1"
+            >
+              <span>Resume</span>
+              <span aria-hidden="true">↗</span>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
-            onClick={() => setIsMobileOpen(!isMobileOpen)}
-            aria-label={isMobileOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isMobileOpen}
-            data-cursor="pointer"
-          >
-            <span
-              className="block w-5 h-[1.5px] transition-all duration-300"
-              style={{
-                backgroundColor: 'var(--fg)',
-                transform: isMobileOpen ? 'rotate(45deg) translate(2px, 2px)' : 'none',
-              }}
-            />
-            <span
-              className="block w-5 h-[1.5px] transition-all duration-300"
-              style={{
-                backgroundColor: 'var(--fg)',
-                transform: isMobileOpen ? 'rotate(-45deg) translate(2px, -2px)' : 'none',
-              }}
-            />
-          </button>
-        </div>
-      </nav>
-
-      {/* Mobile Full-Screen Menu */}
-      <div
-        className={`fixed inset-0 z-40 transition-all duration-500 ${
-          isMobileOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-        style={{ backgroundColor: 'var(--bg)' }}
-      >
-        <div className="flex flex-col justify-center items-start h-full px-8">
-          <div className="space-y-8">
-            {navLinks.map((link, i) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileOpen(false)}
-                className="block text-display-lg transition-all duration-500"
-                style={{
-                  color: 'var(--fg)',
-                  transform: isMobileOpen ? 'translateY(0)' : 'translateY(40px)',
-                  opacity: isMobileOpen ? 1 : 0,
-                  transitionDelay: `${150 + i * 80}ms`,
-                }}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-
-          <div
-            className="mt-12 flex items-center gap-6 transition-all duration-500"
-            style={{
-              transform: isMobileOpen ? 'translateY(0)' : 'translateY(20px)',
-              opacity: isMobileOpen ? 1 : 0,
-              transitionDelay: '450ms',
+            type="button"
+            onClick={() => {
+              sfx.playClick();
+              setIsMobileMenuOpen(!isMobileMenuOpen);
             }}
+            className="relative flex h-10 w-10 items-center justify-center border-2 border-ink bg-paper shadow-print-sm transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none md:hidden"
+            aria-expanded={isMobileMenuOpen}
+            aria-label="Toggle navigation menu"
           >
-            <a href="https://github.com/prathamsahu31" target="_blank" rel="noreferrer" className="text-meta" style={{ color: 'var(--muted)' }}>GitHub ↗</a>
-            <a href="https://www.linkedin.com/in/prathamsahu31/" target="_blank" rel="noreferrer" className="text-meta" style={{ color: 'var(--muted)' }}>LinkedIn ↗</a>
-            <a href="https://x.com/PrathamSahu31" target="_blank" rel="noreferrer" className="text-meta" style={{ color: 'var(--muted)' }}>Twitter ↗</a>
+            {isMobileMenuOpen ? (
+              <X size={18} className="text-ink" />
+            ) : (
+              <div className="flex flex-col gap-1.5 items-center justify-center">
+                <span className="h-[2px] w-5 bg-ink"></span>
+                <span className="h-[2px] w-5 bg-ink"></span>
+              </div>
+            )}
+          </button>
+        </nav>
+
+        {/* Mobile Menu Dropdown */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden border-b-2 border-ink bg-paper px-6 py-6 space-y-4 animate-in fade-in slide-in-from-top-2">
+            <div className="flex items-center justify-between pb-3 border-b border-ink/15">
+              <span className="font-mono text-xs uppercase tracking-widest text-muted">Sound Effects</span>
+              <button
+                type="button"
+                onClick={toggleSound}
+                className={`flex h-8 items-center gap-2 px-3 border-2 border-ink text-xs font-mono uppercase ${
+                  isSoundOn ? 'bg-blue-600 text-paper' : 'bg-paper text-ink'
+                }`}
+              >
+                {isSoundOn ? <Volume2 size={14} /> : <VolumeX size={14} />}
+                <span>{isSoundOn ? 'Audio ON' : 'Muted'}</span>
+              </button>
+            </div>
+
+            <div className="flex flex-col space-y-3 pt-2">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => {
+                    sfx.playClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="font-mono text-sm font-medium uppercase tracking-[0.15em] text-ink hover:text-blue-600 py-1"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <a
+                href="https://raw.githubusercontent.com/prathamsahu31/Portfolio/main/Pratham's%20Resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => {
+                  sfx.playStamp();
+                  setIsMobileMenuOpen(false);
+                }}
+                className="font-mono text-sm font-medium uppercase tracking-[0.15em] text-blue-600 hover:underline py-1 flex items-center gap-1.5"
+              >
+                <span>Download Resume (PDF)</span>
+                <ExternalLink size={14} />
+              </a>
+            </div>
           </div>
-        </div>
-      </div>
+        )}
+      </header>
     </>
   );
 }
