@@ -1,38 +1,36 @@
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { About } from './components/About';
+import { Marquee } from './components/Marquee';
+import { Toolbox } from './components/About';
+import { FieldNotes } from './components/FieldNotes';
 import { Experience } from './components/Experience';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { ToastProvider } from './components/Toast';
-import { TerminalWidget } from './components/TerminalWidget';
+import { Cursor } from './components/Cursor';
 
 export default function App() {
   return (
-    <ToastProvider>
-      <div className="min-h-screen bg-neutral-950 text-neutral-50 font-sans selection:bg-emerald-500/30 selection:text-emerald-200 relative overflow-x-hidden">
-        {/* Ambient Grid Layer */}
-        <div className="fixed inset-0 bg-grid-pattern opacity-40 pointer-events-none z-0" />
+    <div style={{ backgroundColor: 'var(--bg)', color: 'var(--fg)' }}>
+      {/* Navigation */}
+      <Navbar />
 
-        {/* Global Navigation */}
-        <Navbar />
+      {/* Main Content */}
+      <main id="main">
+        <Hero />
+        <Marquee />
+        <Toolbox />
+        <FieldNotes />
+        <Experience />
+        <Projects />
+        <Contact />
+      </main>
 
-        {/* Main Content Sections */}
-        <main className="relative z-10">
-          <Hero />
-          <About />
-          <Experience />
-          <Projects />
-          <Contact />
-        </main>
+      {/* Footer */}
+      <Footer />
 
-        {/* Interactive Terminal / CLI Widget */}
-        <TerminalWidget />
-
-        {/* Page Footer */}
-        <Footer />
-      </div>
-    </ToastProvider>
+      {/* Custom Cursor (desktop only) */}
+      <Cursor />
+    </div>
   );
 }
