@@ -1,87 +1,96 @@
-import { Github, Linkedin, Twitter, Mail, ArrowUp } from 'lucide-react';
+import { sfx } from '../utils/sfx';
 
 export function Footer() {
   const scrollToTop = () => {
+    sfx.playClick();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <footer className="py-12 border-t border-white/10 relative bg-neutral-950">
-      <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-        
-        {/* Left branding */}
-        <div className="flex flex-col items-center md:items-start gap-1">
-          <div className="flex items-center gap-2">
-            <span className="w-6 h-6 rounded-md bg-emerald-500/20 text-emerald-400 font-mono text-xs flex items-center justify-center font-bold">
-              PS
-            </span>
-            <span className="font-display font-bold text-white text-base">Pratham Sahu</span>
+    <footer className="border-t-2 border-ink bg-paper py-12 mt-12">
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b-2 border-ink/15">
+          
+          {/* Branding */}
+          <div className="text-center md:text-left">
+            <a
+              href="#"
+              onClick={() => sfx.playPop()}
+              className="font-display text-2xl font-bold tracking-tight text-ink"
+            >
+              Pratham<span className="text-blue-600 font-bold">*</span>
+            </a>
+            <p className="font-mono text-xs uppercase tracking-widest text-muted mt-1">
+              CSE @ NSUT · AI/ML & Full-Stack Developer · Delhi, India
+            </p>
           </div>
-          <p className="text-neutral-500 text-xs mt-1">
-            CSE @ NSUT · AI/ML & Full-Stack Developer · Delhi, India
-          </p>
-        </div>
 
-        {/* Center Quick Links */}
-        <div className="flex items-center gap-6 text-xs text-neutral-400 font-medium">
-          <a href="#about" className="hover:text-white transition-colors">About</a>
-          <a href="#experience" className="hover:text-white transition-colors">Education</a>
-          <a href="#projects" className="hover:text-white transition-colors">Projects</a>
-          <a href="#contact" className="hover:text-white transition-colors">Contact</a>
-          <a href="https://raw.githubusercontent.com/prathamsahu31/Portfolio/main/Pratham's%20Resume.pdf" target="_blank" rel="noreferrer" className="hover:text-emerald-400 transition-colors">Resume</a>
-        </div>
+          {/* Nav Quick Links */}
+          <div className="flex flex-wrap items-center justify-center gap-6 font-mono text-xs font-semibold uppercase tracking-wider text-ink">
+            <a href="#skills" onClick={() => sfx.playClick()} className="highlight-hover">Skills</a>
+            <a href="#about" onClick={() => sfx.playClick()} className="highlight-hover">About</a>
+            <a href="#projects" onClick={() => sfx.playClick()} className="highlight-hover">Work</a>
+            <a href="#contact" onClick={() => sfx.playClick()} className="highlight-hover">Contact</a>
+            <a
+              href="https://raw.githubusercontent.com/prathamsahu31/Portfolio/main/Pratham's%20Resume.pdf"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => sfx.playStamp()}
+              className="highlight-hover text-blue-600"
+            >
+              Resume ↗
+            </a>
+          </div>
 
-        {/* Right Socials & Back To Top */}
-        <div className="flex items-center gap-4 text-neutral-400">
-          <a
-            href="https://github.com/prathamsahu31"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-white hover:scale-110 transition-all p-1.5"
-            aria-label="GitHub"
-          >
-            <Github size={18} />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/prathamsahu31/"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-indigo-400 hover:scale-110 transition-all p-1.5"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={18} />
-          </a>
-          <a
-            href="https://x.com/PrathamSahu31"
-            target="_blank"
-            rel="noreferrer"
-            className="hover:text-cyan-400 hover:scale-110 transition-all p-1.5"
-            aria-label="Twitter / X"
-          >
-            <Twitter size={18} />
-          </a>
-          <a
-            href="mailto:prathamsahu31@gmail.com"
-            className="hover:text-emerald-400 hover:scale-110 transition-all p-1.5"
-            aria-label="Email"
-          >
-            <Mail size={18} />
-          </a>
-
+          {/* Back to Top */}
           <button
+            type="button"
             onClick={scrollToTop}
-            className="ml-2 w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-neutral-400 hover:text-white hover:bg-white/15 transition-all"
-            title="Scroll to Top"
-            aria-label="Scroll to Top"
+            className="border-2 border-ink bg-paper px-4 py-2 font-mono text-xs font-semibold uppercase tracking-wider text-ink shadow-print-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all active:translate-x-[3px] active:translate-y-[3px]"
           >
-            <ArrowUp size={14} />
+            Back to top ↑
           </button>
         </div>
 
-      </div>
+        {/* Socials & Copyright */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted">
+          <div className="flex items-center gap-6">
+            <a
+              href="https://github.com/prathamsahu31"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-ink transition-colors"
+            >
+              GitHub
+            </a>
+            <a
+              href="https://www.linkedin.com/in/prathamsahu31/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-blue-600 transition-colors"
+            >
+              LinkedIn
+            </a>
+            <a
+              href="https://x.com/PrathamSahu31"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-blue-600 transition-colors"
+            >
+              Twitter
+            </a>
+            <a
+              href="mailto:prathamsahu31@gmail.com"
+              className="hover:text-ink transition-colors"
+            >
+              Email
+            </a>
+          </div>
 
-      <div className="text-center mt-8 text-[11px] text-neutral-600">
-        © {new Date().getFullYear()} Pratham Sahu. All rights reserved. Built with React & Tailwind CSS.
+          <p className="text-center sm:text-right text-[11px]">
+            Designed with print aesthetics & built with React · © {new Date().getFullYear()} Pratham Sahu
+          </p>
+        </div>
       </div>
     </footer>
   );

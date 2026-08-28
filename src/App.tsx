@@ -1,38 +1,36 @@
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { About } from './components/About';
-import { Experience } from './components/Experience';
+import { Marquee } from './components/Marquee';
+import { Toolbox } from './components/Toolbox';
+import { AboutSection } from './components/AboutSection';
 import { Projects } from './components/Projects';
+import { Reviews } from './components/Reviews';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
-import { ToastProvider } from './components/Toast';
-import { TerminalWidget } from './components/TerminalWidget';
+import { DoodleCanvas } from './components/DoodleCanvas';
 
 export default function App() {
   return (
-    <ToastProvider>
-      <div className="min-h-screen bg-neutral-950 text-neutral-50 font-sans selection:bg-emerald-500/30 selection:text-emerald-200 relative overflow-x-hidden">
-        {/* Ambient Grid Layer */}
-        <div className="fixed inset-0 bg-grid-pattern opacity-40 pointer-events-none z-0" />
+    <div className="min-h-screen bg-paper text-ink selection:bg-blue-600 selection:text-paper relative">
+      {/* Interactive Page Doodle Canvas & Left Margin Line */}
+      <DoodleCanvas />
 
-        {/* Global Navigation */}
-        <Navbar />
+      {/* Global Header Navigation */}
+      <Navbar />
 
-        {/* Main Content Sections */}
-        <main className="relative z-10">
-          <Hero />
-          <About />
-          <Experience />
-          <Projects />
-          <Contact />
-        </main>
+      {/* Main Content Sections */}
+      <main id="main" className="relative z-10">
+        <Hero />
+        <Marquee />
+        <Toolbox />
+        <AboutSection />
+        <Projects />
+        <Reviews />
+        <Contact />
+      </main>
 
-        {/* Interactive Terminal / CLI Widget */}
-        <TerminalWidget />
-
-        {/* Page Footer */}
-        <Footer />
-      </div>
-    </ToastProvider>
+      {/* Page Footer */}
+      <Footer />
+    </div>
   );
 }
